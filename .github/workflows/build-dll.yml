@@ -1,0 +1,28 @@
+name: Build DLL Online
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup MSVC environment
+        uses: ilammy/msvc-dev-cmd@v1
+
+      - name: Build DLL and import library
+        shell: cmd
+        run: |
+          cl /nologo /EHsc /LD DllProject\Lab5Dll.cpp DllProject\dllmain.cpp /I DllProject /Fe:Lab5Dll.dll /link /OUT:Lab5Dll.dll /IMPLIB:Lab5Dll.lib
+
+      - name: Upload DLL and LIB artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: lab5-dll-build
+          path: |
+            Lab5Dll.dll
+            Lab5Dll.lib

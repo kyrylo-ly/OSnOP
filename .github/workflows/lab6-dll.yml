@@ -55,6 +55,7 @@ jobs:
           }
 
           Write-Host "implicit.exe failed without DLL as expected. Exit code: $exitCode"
+          $global:LASTEXITCODE = 0
 
       - name: Run both apps with DLL next to EXE
         shell: cmd

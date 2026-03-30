@@ -2,6 +2,8 @@ name: Build DLL Online
 
 on:
   workflow_dispatch:
+  push:
+  pull_request:
 
 jobs:
   build:
@@ -17,7 +19,7 @@ jobs:
       - name: Build DLL and import library
         shell: cmd
         run: |
-          cl /nologo /EHsc /LD lab5/DllProject\Lab5Dll.cpp lab5/DllProject\dllmain.cpp /I lab5/DllProject /Fe:Lab5Dll.dll /link /OUT:Lab5Dll.dll /IMPLIB:Lab5Dll.lib
+          cl /nologo /EHsc /LD lab5\DllProject\Lab5Dll.cpp lab5\DllProject\dllmain.cpp /I lab5\DllProject /Fe:Lab5Dll.dll /link /OUT:Lab5Dll.dll /IMPLIB:Lab5Dll.lib
 
       - name: Upload DLL and LIB artifacts
         uses: actions/upload-artifact@v4

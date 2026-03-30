@@ -1,0 +1,80 @@
+name: Lab6 DLL Linking CI
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "lab5/**"
+      - "lab6/**"
+      - ".github/workflows/lab6-dll.yml"
+  pull_request:
+    paths:
+      - "lab5/**"
+      - "lab6/**"
+      - ".github/workflows/lab6-dll.yml"
+
+jobs:
+  build-and-test:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup MSVC environment
+        uses: ilammy/msvc-dev-cmd@v1
+
+      - name: Build Lab5 DLL and import library
+        shell: cmd
+        run: |
+          cl /nologo /EHsc /LD lab5\DllProject\Lab5Dll.cpp lab5\DllProject\dllmain.cpp /I lab5\DllProject /Fe:Lab5Dll.dll /link /OUT:Lab5Dll.dll /IMPLIB:Lab5Dll.lib
+
+      - name: Build implicit linking client
+        shell: cmd
+        run: |
+          cl /nologo /EHsc lab6\ImplicitLinkProject\main.cpp /I lab5\DllProject /link /LIBPATH:. /OUT:implicit.exe
+
+      - name: Build explicit linking client
+        shell: cmd
+        run: |
+          cl /nologo /EHsc lab6\ExplicitLinkProject\main.cpp /I lab5\DllProject /OUT:explicit.exe
+
+      - name: Verify implicit app fails without DLL
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Path run\without_dll -Force | Out-Null
+          Copy-Item implicit.exe run\without_dll\
+
+          Push-Location run\without_dll
+          .\implicit.exe
+          $exitCode = $LASTEXITCODE
+          Pop-Location
+
+          if ($exitCode -eq 0) {
+            throw "implicit.exe unexpectedly succeeded without DLL"
+          }
+
+          Write-Host "implicit.exe failed without DLL as expected. Exit code: $exitCode"
+
+      - name: Run both apps with DLL next to EXE
+        shell: cmd
+        run: |
+          if not exist run\with_dll mkdir run\with_dll
+          copy /Y implicit.exe run\with_dll\implicit.exe
+          copy /Y explicit.exe run\with_dll\explicit.exe
+          copy /Y Lab5Dll.dll run\with_dll\Lab5Dll.dll
+
+          pushd run\with_dll
+          implicit.exe
+          explicit.exe
+          popd
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: lab6-dll-artifacts
+          path: |
+            Lab5Dll.dll
+            Lab5Dll.lib
+            implicit.exe
+            explicit.exe

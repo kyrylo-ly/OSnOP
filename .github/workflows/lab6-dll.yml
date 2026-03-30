@@ -37,7 +37,19 @@ jobs:
       - name: Build explicit linking client
         shell: cmd
         run: |
-          cl /nologo /EHsc lab6\ExplicitLinkProject\main.cpp /I lab5\DllProject /OUT:explicit.exe
+          cl /nologo /EHsc lab6\ExplicitLinkProject\main.cpp /I lab5\DllProject /link /OUT:explicit.exe
+
+      - name: Verify EXE files were produced
+        shell: cmd
+        run: |
+          if not exist implicit.exe (
+            echo implicit.exe was not produced
+            exit /b 1
+          )
+          if not exist explicit.exe (
+            echo explicit.exe was not produced
+            exit /b 1
+          )
 
       - name: Verify implicit app fails without DLL
         shell: pwsh

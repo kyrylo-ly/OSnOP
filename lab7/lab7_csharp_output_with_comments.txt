@@ -1,0 +1,24 @@
+Результати запуску C#-програми (P/Invoke, неявне зв'язування DLL)
+
+C# implicit P/Invoke: all DLL tests passed.
+avgLoad=59.175, peakIndex=2, cost=34.5984
+tag=AL-0042, strongScore=100, weakScore=11
+
+Коментарі:
+1) AnalyzeCpuLoadW:
+   - hasHigh=true, оскільки є значення 72.5 > 70.0;
+   - peakIndex=2 відповідає максимальному елементу;
+   - avgLoad=59.175 узгоджується з ручним обчисленням.
+2) CountStableTransitionsW:
+   - ignoreRepeats=true -> 3 переходи;
+   - ignoreRepeats=false -> 7 переходів;
+   - longestRun=3 (серія з трьох значень 3).
+3) EstimateDeliveryCostW:
+   - коректний набір даних дає 34.5984;
+   - некоректна відстань (-1) повертає -1.0.
+4) BuildUserTagW:
+   - "Ada Lovelace" -> "AL-0042";
+   - неалфавітне ім'я "1234" коректно відхиляється.
+5) EvaluatePasswordStrengthW:
+   - сильний пароль: class=4, score=100;
+   - слабкий пароль: class=0, score=11.

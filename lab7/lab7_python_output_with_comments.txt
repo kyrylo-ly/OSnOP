@@ -1,0 +1,12 @@
+Результати запуску Python-програми (ctypes, виклик Win32 DLL)
+
+Python ctypes: all DLL tests passed.
+avgLoad=59.175, peakIndex=2, cost=34.5984
+tag=AL-0042, strongScore=100, weakScore=11
+
+Коментарі:
+1) В Python для виклику DLL використано ctypes.CDLL та явне задання argtypes/restype.
+2) Тип BOOL з DLL відображено як ctypes.c_int, що відповідає WinAPI BOOL.
+3) Для рядкових аргументів LPCSTR/LPSTR використано bytes та create_string_buffer.
+4) Результати всіх функцій збігаються з C++ (Lab 6) і C# тестом.
+5) Це підтверджує коректну конвенцію виклику (cdecl) і правильний маршалінг параметрів.

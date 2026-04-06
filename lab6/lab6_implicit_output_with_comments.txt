@@ -1,0 +1,21 @@
+Lab 6 - Implicit DLL linking run output
+
+Program file:
+lab6_implicit_linking_test.cpp
+
+Console output:
+Implicit linking: all DLL tests passed.
+avgLoad=59.175, peakIndex=2, cost=34.5984
+tag=AL-0042, strongScore=100, weakScore=11
+
+Comments:
+1) all DLL tests passed
+   Means import library Lab5Dll.lib was linked at build time and all exported functions were called successfully.
+
+2) avgLoad=59.175, peakIndex=2, cost=34.5984
+   AnalyzeCpuLoadW computed average CPU load and found max element at index 2.
+   EstimateDeliveryCostW returned delivery price with return trip and cargo surcharge.
+
+3) tag=AL-0042, strongScore=100, weakScore=11
+   BuildUserTagW generated stable tag from full name and serial.
+   EvaluatePasswordStrengthW classified strong password as max score and weak password as low score.

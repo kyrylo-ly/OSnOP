@@ -7,11 +7,6 @@ on:
       - "lab5/**"
       - "lab6/**"
       - ".github/workflows/lab6-dll.yml"
-  pull_request:
-    paths:
-      - "lab5/**"
-      - "lab6/**"
-      - ".github/workflows/lab6-dll.yml"
 
 jobs:
   build-and-test:

@@ -1,0 +1,9 @@
+Lab7 submission files (send separately, no archive):
+
+1) Lab5Dll.lib
+2) Lab5Dll.dll
+3) lab7_csharp_dll_test.cs
+4) lab7_csharp_output_with_comments.txt
+5) lab7_python_dll_test.py
+6) lab7_python_output_with_comments.txt
+7) lab7_report.txt

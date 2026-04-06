@@ -1,0 +1,106 @@
+name: Lab7 DLL From CSharp And Python CI
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "lab5/**"
+      - "lab7/**"
+      - ".github/workflows/lab7-dll-languages.yml"
+
+jobs:
+  build-and-test-lab7:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup MSVC environment
+        uses: ilammy/msvc-dev-cmd@v1
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Build Lab5 DLL and import library
+        shell: cmd
+        run: |
+          cl /nologo /EHsc /LD lab5\DllProject\Lab5Dll.cpp lab5\DllProject\dllmain.cpp /I lab5\DllProject /Fe:Lab5Dll.dll /link /OUT:Lab5Dll.dll /IMPLIB:Lab5Dll.lib
+
+      - name: Verify DLL and LIB were produced
+        shell: cmd
+        run: |
+          if not exist Lab5Dll.dll (
+            echo Lab5Dll.dll was not produced
+            exit /b 1
+          )
+          if not exist Lab5Dll.lib (
+            echo Lab5Dll.lib was not produced
+            exit /b 1
+          )
+
+      - name: Build C# test app
+        shell: cmd
+        run: |
+          csc /nologo /target:exe /out:lab7_csharp.exe lab7\lab7_csharp_dll_test.cs
+
+      - name: Run C# test with DLL next to EXE
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Path run\csharp -Force | Out-Null
+          Copy-Item lab7_csharp.exe run\csharp\
+          Copy-Item Lab5Dll.dll run\csharp\
+
+          Push-Location run\csharp
+          .\lab7_csharp.exe | Tee-Object -FilePath ..\..\lab7_csharp_ci_output.txt
+          $exitCode = $LASTEXITCODE
+          Pop-Location
+
+          if ($exitCode -ne 0) {
+            throw "C# test failed with exit code $exitCode"
+          }
+
+      - name: Verify C# output markers
+        shell: pwsh
+        run: |
+          $text = Get-Content lab7_csharp_ci_output.txt -Raw
+          if ($text -notmatch "all DLL tests passed") {
+            throw "C# output does not contain success marker"
+          }
+
+      - name: Run Python test with DLL next to script
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Path run\python -Force | Out-Null
+          Copy-Item lab7\lab7_python_dll_test.py run\python\
+          Copy-Item Lab5Dll.dll run\python\
+
+          Push-Location run\python
+          python .\lab7_python_dll_test.py | Tee-Object -FilePath ..\..\lab7_python_ci_output.txt
+          $exitCode = $LASTEXITCODE
+          Pop-Location
+
+          if ($exitCode -ne 0) {
+            throw "Python test failed with exit code $exitCode"
+          }
+
+      - name: Verify Python output markers
+        shell: pwsh
+        run: |
+          $text = Get-Content lab7_python_ci_output.txt -Raw
+          if ($text -notmatch "all DLL tests passed") {
+            throw "Python output does not contain success marker"
+          }
+
+      - name: Upload lab7 artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: lab7-dll-language-artifacts
+          path: |
+            Lab5Dll.dll
+            Lab5Dll.lib
+            lab7_csharp.exe
+            lab7_csharp_ci_output.txt
+            lab7_python_ci_output.txt

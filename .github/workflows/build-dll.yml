@@ -2,8 +2,10 @@ name: Build DLL Online
 
 on:
   workflow_dispatch:
-  push:
-  pull_request:
+    push:
+      paths:
+        - "lab5/**"
+        - ".github/workflows/build-dll.yml"
 
 jobs:
   build:

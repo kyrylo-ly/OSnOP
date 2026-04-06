@@ -1,0 +1,22 @@
+Lab 6 submission manifest (files are separate, not archived)
+
+1) Import file (*.lib) from previous lab:
+   Lab5Dll.lib
+
+2) DLL file (*.dll) from previous lab:
+   Lab5Dll.dll
+
+3) Program file for IMPLICIT linking:
+   lab6_implicit_linking_test.cpp
+
+4) Printed results for implicit linking with comments:
+   lab6_implicit_output_with_comments.txt
+
+5) Program file for EXPLICIT linking:
+   lab6_explicit_linking_test.cpp
+
+6) Printed results for explicit linking with comments:
+   lab6_explicit_output_with_comments.txt
+
+Note:
+All files are prepared as individual files in repository root for fast preview and external checking.

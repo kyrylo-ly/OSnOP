@@ -1,0 +1,23 @@
+Lab 6 - Explicit DLL linking run output
+
+Program file:
+lab6_explicit_linking_test.cpp
+
+Console output:
+Explicit linking: all DLL tests passed.
+Loaded from: Lab5Dll.dll
+avgLoad=59.175, peakIndex=2, cost=34.5984
+tag=AL-0042, strongScore=100, weakScore=11
+
+Comments:
+1) all DLL tests passed
+   Means DLL was loaded at runtime with LoadLibraryA and all function pointers were resolved by GetProcAddress.
+
+2) Loaded from: Lab5Dll.dll
+   Confirms that dynamic loading used DLL located next to EXE in runtime folder.
+
+3) avgLoad=59.175, peakIndex=2, cost=34.5984
+   The same computational results as implicit mode confirm behavioral equivalence of both linking methods.
+
+4) tag=AL-0042, strongScore=100, weakScore=11
+   String formatting and password analysis functions worked through runtime-resolved function pointers.

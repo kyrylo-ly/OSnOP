@@ -11,7 +11,46 @@
 - Lab5Dll.lib (файл імпорту)
 - Lab5Dll.dll (динамічна бібліотека)
 
-2. Використання DLL у програмі C#
+2. Спосіб підключення:
+- неявне зв'язування через механізм P/Invoke (`DllImport`)
+- для кожної DLL-функції оголошено зовнішній метод з відповідною сигнатурою
+- задано `CallingConvention.Cdecl`
+- для BOOL використано маршалінг `UnmanagedType.Bool`
+
+Перевірені функції:
+- AnalyzeCpuLoadW
+- CountStableTransitionsW
+- EstimateDeliveryCostW
+- BuildUserTagW
+- EvaluatePasswordStrengthW
+
+Результати C#:
+- всі тести пройдено
+- детальний консольний вивід наведено у файлі `lab7_csharp_output_with_comments.txt`
+
+3. Використання DLL у програмі Python
+Обрана мова:
+- Python
+
+Файл програми:
+- lab7_python_dll_test.py
+
+Спосіб підключення:
+- модуль `ctypes`, завантаження бібліотеки через `ctypes.CDLL`
+- для кожної функції вказано `argtypes` і `restype`
+- тип WinAPI `BOOL` представлено як `ctypes.c_int`
+- рядкові параметри `LPCSTR/LPSTR` обробляються через `bytes` та `create_string_buffer`
+
+Перевірені функції:
+- AnalyzeCpuLoadW
+- CountStableTransitionsW
+- EstimateDeliveryCostW
+- BuildUserTagW
+- EvaluatePasswordStrengthW
+
+Результати Python:
+- всі тести пройдено
+- детальний консольний вивід наведено у файлі `lab7_python_output_with_comments.txt`
 Файл програми:
 - lab7_csharp_dll_test.cs
 
@@ -65,7 +104,7 @@
 У Python/Visual Basic/Java доцільно виносити в DLL:
 - обчислювально інтенсивні процедури (математика, обробка сигналів, статистика);
 - алгоритми пакетної обробки масивів чисел;
-- функції перевірки даних і форматування, що часто викликаються;
+- функції перевірки даних і форматування, що часто ви   кликаються;
 - код, який уже реалізований у C/C++ та перевірений тестами.
 
 Очікуваний ефект:

@@ -1,0 +1,3 @@
+C# implicit P/Invoke: all DLL tests passed.
+avgLoad=59.175, peakIndex=2, cost=34.5984
+tag=AL-0042, strongScore=100, weakScore=11

@@ -1,0 +1,95 @@
+[2026-05-17 14:04:40] === Program started ===
+[2026-05-17 14:04:40] Working directory: /Users/kyrylo/dev/repos/univer/OSnOP/lab2
+[2026-05-17 14:04:40] Operation 1: list full names
+[2026-05-17 14:04:40] 1. /Users/kyrylo/dev/repos/univer/OSnOP/lab2/problem/input_a.dat
+[2026-05-17 14:04:40] 2. /Users/kyrylo/dev/repos/univer/OSnOP/lab2/problem/input_b.dat
+[2026-05-17 14:04:40] Operation 2: show full paths
+[2026-05-17 14:04:40] 1. /Users/kyrylo/dev/repos/univer/OSnOP/lab2/problem/input_a.dat
+[2026-05-17 14:04:40] 2. /Users/kyrylo/dev/repos/univer/OSnOP/lab2/problem/input_b.dat
+[2026-05-17 14:04:40] Operation 3: show file properties and attributes
+[2026-05-17 14:04:40] File #1: input_a.dat
+[2026-05-17 14:04:40] Full name: /Users/kyrylo/dev/repos/univer/OSnOP/lab2/problem/input_a.dat
+[2026-05-17 14:04:40] File name: input_a.dat
+[2026-05-17 14:04:40] Extension: .dat
+[2026-05-17 14:04:40] Parent folder: /Users/kyrylo/dev/repos/univer/OSnOP/lab2/problem
+[2026-05-17 14:04:40] Size (bytes): 69
+[2026-05-17 14:04:40] Created: 2026-05-17 14:04:33
+[2026-05-17 14:04:40] Modified: 2026-05-17 14:04:33
+[2026-05-17 14:04:40] Last access: 2026-05-17 14:04:34
+[2026-05-17 14:04:40] Read only: No
+[2026-05-17 14:04:40] Directory: No
+[2026-05-17 14:04:40] Regular file: Yes
+[2026-05-17 14:04:40] Hidden: No
+[2026-05-17 14:04:40] System: No
+[2026-05-17 14:04:40] Archive: No
+[2026-05-17 14:04:40] File #2: input_b.dat
+[2026-05-17 14:04:40] Full name: /Users/kyrylo/dev/repos/univer/OSnOP/lab2/problem/input_b.dat
+[2026-05-17 14:04:40] File name: input_b.dat
+[2026-05-17 14:04:40] Extension: .dat
+[2026-05-17 14:04:40] Parent folder: /Users/kyrylo/dev/repos/univer/OSnOP/lab2/problem
+[2026-05-17 14:04:40] Size (bytes): 65
+[2026-05-17 14:04:40] Created: 2026-05-17 14:04:36
+[2026-05-17 14:04:40] Modified: 2026-05-17 14:04:36
+[2026-05-17 14:04:40] Last access: 2026-05-17 14:04:37
+[2026-05-17 14:04:40] Read only: No
+[2026-05-17 14:04:40] Directory: No
+[2026-05-17 14:04:40] Regular file: Yes
+[2026-05-17 14:04:40] Hidden: No
+[2026-05-17 14:04:40] System: No
+[2026-05-17 14:04:40] Archive: No
+[2026-05-17 14:04:40] Operation 4: show text from /Users/kyrylo/dev/repos/univer/OSnOP/lab2/problem/input_a.dat
+[2026-05-17 14:04:40] File content shown in console.
+[2026-05-17 14:04:40] Operation 5: sum numbers from /Users/kyrylo/dev/repos/univer/OSnOP/lab2/problem/input_a.dat
+[2026-05-17 14:04:40] Replacement value: 0.0
+[2026-05-17 14:04:40] Tokens processed: 21
+[2026-05-17 14:04:40] Sum: 231.55
+[2026-05-17 14:04:40] Corrected token #10: 'abc' -> 0.0
+[2026-05-17 14:04:40] Corrected token #19: 'bad_token' -> 0.0
+[2026-05-17 14:04:40] === Program finished ===
+[2026-05-17 14:06:19] === Program started ===
+[2026-05-17 14:06:19] Working directory: /Users/kyrylo/dev/repos/univer/OSnOP/lab2
+[2026-05-17 14:06:31] Operation 1: list full names
+[2026-05-17 14:06:31] 1. /Users/kyrylo/dev/repos/univer/OSnOP/lab2/problem/input_a.dat
+[2026-05-17 14:06:31] 2. /Users/kyrylo/dev/repos/univer/OSnOP/lab2/problem/input_b.dat
+[2026-05-17 14:06:36] Operation 2: show full paths
+[2026-05-17 14:06:36] 1. /Users/kyrylo/dev/repos/univer/OSnOP/lab2/problem/input_a.dat
+[2026-05-17 14:06:36] 2. /Users/kyrylo/dev/repos/univer/OSnOP/lab2/problem/input_b.dat
+[2026-05-17 14:06:39] Operation 3: show file properties and attributes
+[2026-05-17 14:06:39] File #1: input_a.dat
+[2026-05-17 14:06:39] Full name: /Users/kyrylo/dev/repos/univer/OSnOP/lab2/problem/input_a.dat
+[2026-05-17 14:06:39] File name: input_a.dat
+[2026-05-17 14:06:39] Extension: .dat
+[2026-05-17 14:06:39] Parent folder: /Users/kyrylo/dev/repos/univer/OSnOP/lab2/problem
+[2026-05-17 14:06:39] Size (bytes): 69
+[2026-05-17 14:06:39] Created: 2026-05-17 14:04:33
+[2026-05-17 14:06:39] Modified: 2026-05-17 14:04:33
+[2026-05-17 14:06:39] Last access: 2026-05-17 14:04:34
+[2026-05-17 14:06:39] Read only: No
+[2026-05-17 14:06:39] Directory: No
+[2026-05-17 14:06:39] Regular file: Yes
+[2026-05-17 14:06:39] Hidden: No
+[2026-05-17 14:06:39] System: No
+[2026-05-17 14:06:39] Archive: No
+[2026-05-17 14:06:39] File #2: input_b.dat
+[2026-05-17 14:06:39] Full name: /Users/kyrylo/dev/repos/univer/OSnOP/lab2/problem/input_b.dat
+[2026-05-17 14:06:39] File name: input_b.dat
+[2026-05-17 14:06:39] Extension: .dat
+[2026-05-17 14:06:39] Parent folder: /Users/kyrylo/dev/repos/univer/OSnOP/lab2/problem
+[2026-05-17 14:06:39] Size (bytes): 65
+[2026-05-17 14:06:39] Created: 2026-05-17 14:04:36
+[2026-05-17 14:06:39] Modified: 2026-05-17 14:04:36
+[2026-05-17 14:06:39] Last access: 2026-05-17 14:04:37
+[2026-05-17 14:06:39] Read only: No
+[2026-05-17 14:06:39] Directory: No
+[2026-05-17 14:06:39] Regular file: Yes
+[2026-05-17 14:06:39] Hidden: No
+[2026-05-17 14:06:39] System: No
+[2026-05-17 14:06:39] Archive: No
+[2026-05-17 14:06:45] Operation 4: show text from /Users/kyrylo/dev/repos/univer/OSnOP/lab2/problem/input_a.dat
+[2026-05-17 14:06:45] File content shown in console.
+[2026-05-17 14:06:58] Operation 5: sum numbers from /Users/kyrylo/dev/repos/univer/OSnOP/lab2/problem/input_b.dat
+[2026-05-17 14:06:58] Replacement value: 1.0
+[2026-05-17 14:06:58] Tokens processed: 20
+[2026-05-17 14:06:58] Sum: 330.2
+[2026-05-17 14:06:58] Corrected token #8: 'eight' -> 1.0
+[2026-05-17 14:06:58] Corrected token #20: '20x' -> 1.0

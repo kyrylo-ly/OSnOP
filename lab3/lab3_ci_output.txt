@@ -1,0 +1,5 @@
+This file is produced/updated by CI workflow `lab3-com-model.yml`.
+Typical output example:
+
+Created <...>/lab3_message.com (39 bytes)
+Created <...>/lab3_message_long.com (55 bytes)

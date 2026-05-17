@@ -1,0 +1,63 @@
+name: Lab3 COM Model CI
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "lab3/**"
+      - ".github/workflows/lab3-com-model.yml"
+
+jobs:
+  build-lab3-artifacts:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build C# utility for step 3
+        shell: cmd
+        run: |
+          csc /nologo /target:exe /out:lab3_step3_build_com.exe lab3\lab3_step3_build_com.cs
+
+      - name: Build C# utility for step 2
+        shell: cmd
+        run: |
+          csc /nologo /target:exe /out:lab3_step2_start_bat.exe lab3\lab3_step2_start_bat.cs
+
+      - name: Generate COM files from byte arrays
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Path lab3\generated -Force | Out-Null
+          .\lab3_step3_build_com.exe lab3\generated\lab3_message.com lab3\generated\lab3_message_long.com | Tee-Object -FilePath lab3\lab3_ci_output.txt
+
+      - name: Verify generated file sizes
+        shell: pwsh
+        run: |
+          $shortFile = Get-Item lab3\generated\lab3_message.com
+          $longFile = Get-Item lab3\generated\lab3_message_long.com
+
+          if ($shortFile.Length -ne 39) {
+            throw "Unexpected short COM size: $($shortFile.Length). Expected 39."
+          }
+
+          if ($longFile.Length -ne 55) {
+            throw "Unexpected long COM size: $($longFile.Length). Expected 55."
+          }
+
+          if ($longFile.Length -le $shortFile.Length) {
+            throw "Long COM is not longer than short COM."
+          }
+
+      - name: Upload lab3 artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: lab3-com-artifacts
+          path: |
+            lab3_step2_start_bat.exe
+            lab3_step3_build_com.exe
+            lab3/lab3_step1_notepad.bat
+            lab3/lab3_step4_run_com.bat
+            lab3/generated/lab3_message.com
+            lab3/generated/lab3_message_long.com
+            lab3/lab3_ci_output.txt

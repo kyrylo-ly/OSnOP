@@ -1,0 +1,40 @@
+3. Розширене синтаксичне означення
+
+3.1. Означення для п.3 (додаткові бінарні операції):
+
+  arith_expr  ::= number  ( operator  number ) *
+  number      ::= cipher  cipher *
+  cipher      ::= "0" | "1" | ... | "9"
+  operator    ::= "+" | "-" | "*" | "/" | "%" | "^" | "&" | "|"
+
+Пояснення нових операцій:
+  %   остача від ділення (mod)
+  ^   піднесення до степеня (pow)
+  &   менше з двох (min)
+  |   більше з двох (max)
+
+3.2. Означення для п.4 (унарні операції):
+
+  arith_expr   ::= number  unary_ops  ( operator  number  unary_ops ) *
+  unary_ops    ::= ( unary_op ) *
+  unary_op     ::= "sqrt" | "sin" | "abs"
+  number       ::= cipher  cipher *
+  cipher       ::= "0" | "1" | ... | "9"
+  operator     ::= "+" | "-" | "*" | "/" | "%" | "^" | "&" | "|"
+
+Унарні операції є постфіксними — застосовуються до останнього обчисленого
+результату. Кілька унарних операцій підряд допустимі.
+
+3.3. Означення для п.5 (системи числення):
+
+  arith_expr    ::= [ base_prefix ]  number  unary_ops  ( operator  number  unary_ops ) *
+  base_prefix   ::= "0b" | "0x"
+  number        ::= [ num_prefix ]  digit  digit *
+  num_prefix    ::= "0b" | "0x"
+  digit         ::= dec_digit | bin_digit | hex_digit   (залежно від контексту)
+  dec_digit     ::= "0" | "1" | ... | "9"
+  bin_digit     ::= "0" | "1"
+  hex_digit     ::= "0" | ... | "9" | "a" | ... | "f" | "A" | ... | "F"
+  operator      ::= "+" | "-" | "*" | "/" | "%" | "^" | "&" | "|"
+  unary_ops     ::= ( unary_op ) *
+  unary_op      ::= "sqrt" | "sin" | "abs"
